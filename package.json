@@ -8,10 +8,11 @@
     "build:pro": "vite build --mode production",
     "preview": "vite preview",
     "lint": "eslint src --fix --ext .ts,.tsx,.vue,.js,.jsx",
-    "prettier": "prettier --write ."
+    "prettier": "prettier --write .",
+    "prepare": "husky install"
   },
   "dependencies": {
-    "axios": "^0.24.0",
+    "axios": "^0.26.1",
     "naive-ui": "^2.24.1",
     "nprogress": "^0.2.0",
     "pinia": "^2.0.0-rc.10",
@@ -22,20 +23,34 @@
   "devDependencies": {
     "@types/node": "^17.0.8",
     "@types/nprogress": "^0.2.0",
-    "@typescript-eslint/eslint-plugin": "^5.9.1",
-    "@typescript-eslint/parser": "^5.9.1",
+    "@typescript-eslint/eslint-plugin": "^5.16.0",
+    "@typescript-eslint/parser": "^5.16.0",
     "@vitejs/plugin-vue": "^2.0.0",
     "dart-sass": "^1.25.0",
-    "eslint-config-prettier": "^8.3.0",
+    "eslint": "^8.11.0",
+    "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-vue": "^8.3.0",
+    "eslint-plugin-vue": "^8.5.0",
+    "husky": ">=7",
     "lint-staged": "^12.1.7",
     "mrm": "^3.0.10",
     "npx": "^10.2.2",
-    "sass": "^1.48.0",
+    "prettier": "^2.6.0",
+    "sass": "^1.49.9",
     "typescript": "^4.4.4",
     "vite": "^2.7.2",
-    "vite-plugin-compression": "^0.4.0",
+    "vite-plugin-compression": "^0.5.1",
     "vue-tsc": "^0.29.8"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,vue,ts,tsx}": [
+      "yarn prettier",
+      "git add"
+    ]
   }
 }
